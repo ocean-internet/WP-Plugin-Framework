@@ -3,7 +3,7 @@
  * Plugin Name: WordPress Plugin Template
  * Plugin URI:  http://www.ocean-internet.co.uk/wordpress/plugins/wordpress-plugin-template
  * Description: Template for developing OOP WordPress plugins.
- * Version:     0.0.3
+ * Version:     0.0.4
  * Author:      Andy Weir <andy@ocean-internet.co.uk>
  * Author URI:  http://www.ocean-internet.co.uk
  * Licence:     GPL2
