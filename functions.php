@@ -1,5 +1,5 @@
 <?php
-namespace OIS;
+namespace OIS\PluginTemplate;
 
 /**
  * Convert CamelCaseString, camelBackString, underscore_string, or slug-string to "Human String"
@@ -81,5 +81,5 @@ function toSlug($string) {
  */
 function clean(&$string) {
     
-    $string = preg_replace('/[A-Za-z0-9_\-]/s', '', $string);
+    $string = preg_replace('/[^A-Za-z0-9_\-]/s', '', $string);
 }
