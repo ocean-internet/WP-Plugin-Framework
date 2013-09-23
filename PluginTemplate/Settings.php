@@ -30,10 +30,10 @@ class Settings extends Core {
     public function addPluginSettings() {
         
         add_options_page(
-            $this->getName() . ' Settings',
+            toHuman($this->getFullName()),
             toHuman($this->getName()),
             'manage_options',
-            toSlug($this->getName()) . '-settings',
+            toSlug($this->getFullName()),
             array(
                 $this,
                 'displaySettingsMenu'
@@ -50,20 +50,20 @@ class Settings extends Core {
     
     public function registerSettings() {
         
-        $values = get_option(toSlug($this->getName()) . '-settings');
+        $values = get_option(toSlug($this->getFullName()));
         
         register_setting( 
-            toSlug($this->getName()) . '-settings',
-            toSlug($this->getName()) . '-settings'
+            toSlug($this->getFullName()),
+            toSlug($this->getFullName())
         );
         
-        add_settings_section(toSlug($this->getName()) . '-settings-main',
-            toHuman($this->getName()) . ' Settings',
+        add_settings_section(toSlug($this->getFullName()) . '-main',
+            toHuman($this->getFullName()),
             array(
                 $this,
                 'printSectionInfo'
             ),
-            toSlug($this->getName()) . '-settings');
+            toSlug($this->getFullName()));
         
         foreach($this->settings as $setting) {
             
@@ -74,8 +74,8 @@ class Settings extends Core {
                     $this,
                     'id_number_callback'
                 ),
-                toSlug($this->getName()) . '-settings',
-                toSlug($this->getName()) . '-settings-main',
+                toSlug($this->getFullName()),
+                toSlug($this->getFullName()) . '-main',
                 array($setting, $values[$setting])
             );
         }
@@ -87,25 +87,28 @@ class Settings extends Core {
             wp_die( __('You do not have sufficient permissions to access this page.'));
 	}
         
-        $name = $this->getName();
+        $name = $this->getFullName();
         
         $human = toHuman($name);
         $slug  = toSlug($name);
-?>	
-<div class="wrap">
-    <?php screen_icon(); ?>
-    <h2><?php echo $human; ?> Settings</h2>
-    <form method="post" action="options.php">
-        <?php settings_fields($slug . '-settings'); ?>
-        <?php do_settings_sections($slug . '-settings'); ?>
-        <?php submit_button(); ?>
-    </form>
-</div>
-<?php
+        
+        $templateFile = toSlug($this->getFullName()) . '.php';
+        
+        if ($overridden_template = locate_template($templateFile)) {
+
+            // locate_template() returns path to file
+            // if either the child theme or the parent theme have overridden the template
+            include $overridden_template;
+        } else {
+
+            // If neither the child nor parent theme have overridden the template,
+            // we load the template from the 'templates' sub-directory of the directory this file is in
+            include $this->pluginDir . '/templates/' . $templateFile;
+        }
     }
     
     public function printSectionInfo() {
-        echo toHuman($this->getName()) . ' main settings:';
+        echo 'Main ' . toHuman($this->getFullName()) . ':';
     }
 
     /** 
@@ -113,7 +116,7 @@ class Settings extends Core {
      */
     public function id_number_callback($setting) {
         printf(
-            '<input type="text" id="'. $setting[0] . '" name="' . toSlug($this->getName()) . '-settings[' . $setting[0] . ']" value="%s" />',
+            '<input type="text" id="'. $setting[0] . '" name="' . toSlug($this->getFullName()) . '[' . $setting[0] . ']" value="%s" />',
             esc_attr($setting[1])
         );
     }

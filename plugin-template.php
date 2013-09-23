@@ -31,5 +31,5 @@ require_once($oisPluginTemplateDir . 'autoload.php');
 require_once($oisPluginTemplateDir . 'bootstrap.php');
 require_once($oisPluginTemplateDir . 'functions.php');
 require_once($oisPluginTemplateDir . 'pluggable.php');
-require_once($oisPluginTemplateDir . 'hooks.php');
+require_once($oisPluginTemplateDir . 'actions.php');
 require_once($oisPluginTemplateDir . 'filters.php');

@@ -24,6 +24,15 @@ class Core {
         
         return array_pop($namespaceArray);
     }
+    
+    protected function getFullName() {
+        
+        $class = get_class($this);
+        
+        $classArray = explode('\\', $class);
+        
+        return $this->getName() . array_pop($classArray);
+    }
 
     /* ---------------------------------------------------------------------- */
 }
