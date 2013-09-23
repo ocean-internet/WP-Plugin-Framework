@@ -83,3 +83,13 @@ function clean(&$string) {
     
     $string = preg_replace('/[^A-Za-z0-9_\-]/s', '', $string);
 }
+
+function alphaNumeric($string) {
+
+    return preg_match('/^[\p{Ll}\p{Lm}\p{Lo}\p{Lt}\p{Lu}\p{Nd}]+$/Du', $string);
+}
+
+function notEmpty($string) {
+    
+    return preg_match('/[^\s]+/m', $string);
+}
