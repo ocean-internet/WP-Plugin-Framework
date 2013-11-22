@@ -2,7 +2,7 @@
     "name": "ocean-internet/wp-plugin-framework",
     "description": "(yet another) OOP Wordpress Plugin Framework",
     "type":        "library",
-    "keywords": ['wordpress', 'plugin'],
+    "keywords": ["wordpress", "plugin"],
     "homepage": "https://github.com/OceanInternet/WP-Plugin-Framework",
     "license": "(GPL-2.0+ or GPL-3.0+)",
     "authors": [
