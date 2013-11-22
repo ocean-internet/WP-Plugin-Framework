@@ -2,15 +2,30 @@
     "name": "ocean-internet/wp-plugin-framework",
     "description": "(yet another) OOP Wordpress Plugin Framework",
     "type":        "library",
+    "keywords": ['wordpress', 'plugin'],
+    "homepage": "https://github.com/OceanInternet/WP-Plugin-Framework",
+    "license": "(GPL-2.0+ or GPL-3.0+)",
+    "authors": [
+        {
+            "name": "Andy Weir",
+            "email": "andy@ocean-internet.co.uk",
+            "homepage": "http://www.ocean-internet.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/OceanInternet/WP-Plugin-Framework/issues",
+        "source": "https://github.com/OceanInternet/WP-Plugin-Framework"
+    },
     "require": {
         "pimple/pimple":      "1.0.*"
-    },
-    "config": {
-        "vendor-dir": "src/Vendor"
     },
     "autoload": {
         "psr-0": {
             "OIS\\": "src/"
         }
+    },
+    "config": {
+        "vendor-dir": "src/Vendor"
     }
 }
