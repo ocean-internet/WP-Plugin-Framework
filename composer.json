@@ -1,0 +1,16 @@
+{
+    "name": "ocean-internet/wp-plugin-framework",
+    "description": "(yet another) OOP Wordpress Plugin Framework",
+    "type":        "library",
+    "require": {
+        "pimple/pimple":      "1.0.*"
+    },
+    "config": {
+        "vendor-dir": "src/Vendor"
+    },
+    "autoload": {
+        "psr-0": {
+            "OIS\\": "src/"
+        }
+    }
+}
