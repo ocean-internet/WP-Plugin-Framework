@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-0": {
-            "OceanInternet\\WpPluginFramework":     "WpPluginFramework"
+            "OceanInternet\\WpPluginFramework":     "src/OceanInternet"
         }
     }
 }
