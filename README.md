@@ -10,7 +10,7 @@ Place the following composer.json in wp-content/mu-plugins:
 
     {
         "require": {
-            "ocean-internet/wp-plugin-framework": "1.0.2"
+            "ocean-internet/wp-plugin-framework": "1.0.*"
         },
         "scripts": {
             "post-install-cmd": [
