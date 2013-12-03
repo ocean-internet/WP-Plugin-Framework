@@ -1,14 +1,14 @@
 <?php
 namespace OceanInternet\WpPluginFramework;
 
-class Settings extends Core {
+abstract class Settings extends Core {
     /* Properties: Dependencies --------------------------------------------- */
-
-    protected $pluginDir;
 
     /* Properties: Public --------------------------------------------------- */
 
     /* Properties: Protected/Private ---------------------------------------- */
+
+    protected $templateFile          = 'wp-plugin-framework-settings.php';
 
     protected $defaultSettingOptions = array(
         'valid' => 'oisNotEmpty',
@@ -19,11 +19,6 @@ class Settings extends Core {
     protected $settings = array();
 
     /* Methods: Constructor ------------------------------------------------- */
-
-    public function __construct($pluginDir) {
-
-        $this->pluginDir = $pluginDir;
-    }
 
     /* Methods: Getter/Setter ----------------------------------------------- */
 
@@ -80,7 +75,7 @@ class Settings extends Core {
                 $options = array_merge($this->defaultSettingOptions, $options);
             }
 
-            if(array_key_exists($setting, $values)) {
+            if($values && array_key_exists($setting, $values)) {
 
                 $value = $values[$setting];
 
@@ -143,35 +138,38 @@ class Settings extends Core {
 
         if (!current_user_can('manage_options')) {
             wp_die( __('You do not have sufficient permissions to access this page.'));
-	}
+	    }
 
         $name = $this->getFullName();
 
         $human = oisToHuman($name);
         $slug  = oisToSlug($name);
 
-        $templateFile = oisToSlug($this->getFullName()) . '.php';
-
-        if ($overridden_template = locate_template($templateFile)) {
+        if ($overridden_template = locate_template($this->templateFile)) {
 
             // locate_template() returns path to file
             // if either the child theme or the parent theme have overridden the template
             include $overridden_template;
+
         } else {
 
             // If neither the child nor parent theme have overridden the template,
             // we load the template from the 'templates' sub-directory of the directory this file is in
-            include $this->pluginDir . '/templates/' . $templateFile;
+            include $this->templateDir . DS . $this->templateFile;
         }
     }
 
-    public function printSectionInfo() {
-        echo 'Main ' . toHuman($this->getFullName()) . ':';
+    public function printSectionInfo($section) {
+
+        if($section['title'] !== oisToHuman($this->getFullName())) {
+
+            echo '<h4>' . $section['title'] . ':' . '</h4>';
+        }
     }
 
     public function printTextSetting($setting) {
 
-        $input = '<input type="text" id="'. $setting[0] . '" name="' . toSlug($this->getFullName()) . '[' . $setting[0] . ']" value="%s" />';
+        $input = '<input type="text" id="'. $setting[0] . '" name="' . oisToSlug($this->getFullName()) . '[' . $setting[0] . ']" value="%s" />';
 
         printf(
             $input,
@@ -181,14 +179,13 @@ class Settings extends Core {
 
     public function printEmailSetting($setting) {
 
-        $input = '<input type="email" id="'. $setting[0] . '" name="' . toSlug($this->getFullName()) . '[' . $setting[0] . ']" value="%s" />';
+        $input = '<input type="email" id="'. $setting[0] . '" name="' . oisToSlug($this->getFullName()) . '[' . $setting[0] . ']" value="%s" />';
 
         printf(
             $input,
             esc_attr($setting[1])
         );
     }
-
 
     /* Methods: Protected/Private ------------------------------------------- */
 
