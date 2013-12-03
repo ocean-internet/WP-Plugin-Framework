@@ -1,95 +1,105 @@
 <?php
-namespace OIS\PluginTemplate;
+if(!defined('OIS_FUNCTIONS')) {
+
+    define('OIS_FUNCTIONS', TRUE);
 
 /**
  * Convert CamelCaseString, camelBackString, underscore_string, or slug-string to "Human String"
- * 
+ *
  * @param  string $string
  * @return string "Human String"
  */
-function toHuman($string) {
-    
-    clean($string);
-    
-    return ucwords(str_replace('_', ' ', toUnderscore($string)));
+function oisToHuman($string) {
+
+    oisCleanString($string);
+
+    return ucwords(str_replace('_', ' ', oisToUnderscore($string)));
 }
 
 /**
  * Convert underscore_string or slug-string to CamelCaseString
- * 
+ *
  * @param  string $string
  * @return string CamelCaseString
  */
-function toCamelCase($string) {
-    
-    clean($string);
-    
+function oisToCamelCase($string) {
+
+    oisCleanString($string);
+
     return preg_replace('/(?:^|[_-])(.?)/e',"strtoupper('$1')",$string);
 }
 
 /**
  * Convert underscore_string or slug-string to camelBackString
- * 
+ *
  * @param  string $string
  * @return string camelBackString
  */
-function toCamelBack($string) {
-    
-    clean($string);
-    
+function oisToCamelBack($string) {
+
+    oisCleanString($string);
+
     return preg_replace('/[_-](.?)/e',"strtoupper('$1')",$string);
 }
 
 /**
  * Convert CamelCaseString, camelBackString, or slug-string to underscore-string
- * 
+ *
  * @param  string $string
  * @return string underscore_string
  */
-function toUnderscore($string) {
-    
-    clean($string);
-    
+function oisToUnderscore($string) {
+
+    oisCleanString($string);
+
     // Convert slug-string to underscore_string
     $string = str_replace('-', '_', $string);
-    
-    // Convert CamelCaseString or camelBackString to underscore-string 
+
+    // Convert CamelCaseString or camelBackString to underscore-string
     return strtolower(preg_replace("/([^A-Z])([A-Z])/", "$1_$2", $string));
 }
 
 /**
  * Convert CamelCaseString, camelBackString, or underscore_string to slug-string
- *  
+ *
  * @param  string $string
  * @return string slug-string
  */
-function toSlug($string) {
-    
-    clean($string);
-    
+function oisToSlug($string) {
+
+    oisCleanString($string);
+
     // Convert underscore_string to slug-string
     $string = str_replace('_', '-', $string);
-    
+
     // Convert CamelBackString or camelBackString to slug-string
     return strtolower(preg_replace("/([^A-Z])([A-Z])/", "$1-$2", $string));
 }
 
 /**
  * Strip non alphanumeric, "_" or "-" characters from string
- * 
+ *
  * @param string $string
  */
-function clean(&$string) {
-    
+function oisCleanString(&$string) {
+
     $string = preg_replace('/[^A-Za-z0-9_\-]/s', '', $string);
 }
 
-function alphaNumeric($string) {
+function oisAlphaNumeric($string) {
 
     return preg_match('/^[\p{Ll}\p{Lm}\p{Lo}\p{Lt}\p{Lu}\p{Nd}]+$/Du', $string);
 }
 
-function notEmpty($string) {
-    
+function oisNotEmpty($string) {
+
     return preg_match('/[^\s]+/m', $string);
+}
+
+function oisPr($stuff) {
+
+    echo '<pre>';
+    print_r($stuff);
+    echo '</pre>';
+}
 }

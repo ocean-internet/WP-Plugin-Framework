@@ -1,0 +1,4 @@
+#!/bin/sh
+# Composer Post-Update script
+
+. vendor/ocean-internet/wp-plugin-framework/scripts/install

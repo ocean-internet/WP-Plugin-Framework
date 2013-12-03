@@ -1,0 +1,4 @@
+#!/bin/sh
+# Composer Post-Install script
+
+cp vendor/ocean-internet/wp-plugin-framework/wp-plugin-framework.loader.php wp-plugin-framework.loader.php

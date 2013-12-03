@@ -2,15 +2,15 @@
     "name": "ocean-internet/wp-plugin-framework",
     "description": "(yet another) OOP Wordpress MyPlugin Framework",
     "type":        "library",
-    "keywords": ["wordpress", "plugin"],
-    "homepage": "https://github.com/OceanInternet/WP-MyPlugin-Framework",
-    "license": "(GPL-2.0+ or GPL-3.0+)",
+    "keywords":    ["wordpress", "plugin"],
+    "homepage":    "https://github.com/OceanInternet/WP-MyPlugin-Framework",
+    "license":     "(GPL-2.0+ or GPL-3.0+)",
     "authors": [
         {
-            "name": "Andy Weir",
-            "email": "andy@ocean-internet.co.uk",
+            "name":     "Andy Weir",
+            "email":    "andy@ocean-internet.co.uk",
             "homepage": "http://www.ocean-internet.co.uk",
-            "role": "Developer"
+            "role":     "Developer"
         }
     ],
     "support": {
@@ -18,14 +18,11 @@
         "source": "https://github.com/OceanInternet/WP-MyPlugin-Framework"
     },
     "require": {
-        "pimple/pimple":      "1.0.*"
+        "pimple/pimple": "1.0.*"
     },
     "autoload": {
         "psr-0": {
-            "OIS\\": "src/"
+            "OceanInternet\\WpPluginFramework":     "WpPluginFramework"
         }
-    },
-    "config": {
-        "vendor-dir": "src/Vendor"
     }
 }

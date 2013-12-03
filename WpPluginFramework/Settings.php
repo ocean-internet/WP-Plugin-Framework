@@ -1,5 +1,5 @@
 <?php
-namespace OIS\WpPluginFramework;
+namespace OceanInternet\WpPluginFramework;
 
 class Settings extends Core {
     /* Properties: Dependencies --------------------------------------------- */
@@ -11,22 +11,12 @@ class Settings extends Core {
     /* Properties: Protected/Private ---------------------------------------- */
 
     protected $defaultSettingOptions = array(
-        'valid' => '\OIS\PluginTemplate\notEmpty',
+        'valid' => 'oisNotEmpty',
         'clean' => 'text_field',
         'input' => 'text'
     );
 
-    protected $settings = array(
-        'title',
-        'comment' => array(
-            'clean' => 'text_field'
-        ),
-        'email_address' => array(
-            'valid'  => 'is_email',
-            'clean'  => 'text_field',
-            'input'  => 'email'
-        )
-    );
+    protected $settings = array();
 
     /* Methods: Constructor ------------------------------------------------- */
 
@@ -42,10 +32,10 @@ class Settings extends Core {
     public function addPluginSettings() {
 
         add_options_page(
-            toHuman($this->getFullName()),
-            toHuman($this->getName()),
+            oisToHuman($this->getFullName()),
+            oisToHuman($this->getName()),
             'manage_options',
-            toSlug($this->getFullName()),
+            oisToSlug($this->getFullName()),
             array(
                 $this,
                 'displaySettingsMenu'
@@ -62,21 +52,21 @@ class Settings extends Core {
 
     public function registerSettings() {
 
-        $values = get_option(toSlug($this->getFullName()));
+        $values = get_option(oisToSlug($this->getFullName()));
 
         register_setting(
-            toSlug($this->getFullName()),
-            toSlug($this->getFullName()),
+            oisToSlug($this->getFullName()),
+            oisToSlug($this->getFullName()),
             array($this, 'validate')
         );
 
-        add_settings_section(toSlug($this->getFullName()) . '-main',
-            toHuman($this->getFullName()),
+        add_settings_section(oisToSlug($this->getFullName()) . '-main',
+            oisToHuman($this->getFullName()),
             array(
                 $this,
                 'printSectionInfo'
             ),
-            toSlug($this->getFullName()));
+            oisToSlug($this->getFullName()));
 
         foreach($this->settings as $setting => $options) {
 
@@ -101,13 +91,13 @@ class Settings extends Core {
 
             add_settings_field(
                 $setting,
-                toHuman($setting),
+                oisToHuman($setting),
                 array(
                     $this,
                     'print' . ucfirst($options['input']) . 'Setting'
                 ),
-                toSlug($this->getFullName()),
-                toSlug($this->getFullName()) . '-main',
+                oisToSlug($this->getFullName()),
+                oisToSlug($this->getFullName()) . '-main',
                 array($setting, $value)
             );
         }
@@ -119,7 +109,7 @@ class Settings extends Core {
 
             if(!array_key_exists($setting, $this->settings) && !in_array($setting, $this->settings)) {
 
-                add_settings_error(toSlug($this->getFullName()), 'invalid-' . $setting, toHuman($setting) . ' does not exist.');
+                add_settings_error(oisToSlug($this->getFullName()), 'invalid-' . $setting, oisToHuman($setting) . ' does not exist.');
                 unset($pluginSettings[$setting]);
                 continue;
 
@@ -142,7 +132,7 @@ class Settings extends Core {
 
             } else {
 
-                add_settings_error(toSlug($this->getFullName()), 'invalid-' . $setting, toHuman($setting) . ' is not valid.');
+                add_settings_error(oisToSlug($this->getFullName()), 'invalid-' . $setting, oisToHuman($setting) . ' is not valid.');
             }
         }
 
@@ -157,10 +147,10 @@ class Settings extends Core {
 
         $name = $this->getFullName();
 
-        $human = toHuman($name);
-        $slug  = toSlug($name);
+        $human = oisToHuman($name);
+        $slug  = oisToSlug($name);
 
-        $templateFile = toSlug($this->getFullName()) . '.php';
+        $templateFile = oisToSlug($this->getFullName()) . '.php';
 
         if ($overridden_template = locate_template($templateFile)) {
 
