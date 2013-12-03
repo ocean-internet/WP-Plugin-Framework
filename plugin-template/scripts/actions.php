@@ -1,4 +1,10 @@
 <?php
 
-// plugin-template Settings Menu
-add_action('admin_menu', array($oisPluginTemplateC['PluginTemplateSettings'], 'addPluginSettings'));
+// Settings Menu
+add_action(
+    'admin_menu',
+    array(
+        $oisPluginFrameworkC['MyPluginSettings'],
+        'addPluginSettings'
+    )
+);

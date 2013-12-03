@@ -1,18 +1,17 @@
 <?php
 /**
- * Project:    WP-Plugin-Framework
- * File:       PluginTemplateSettings.php
- * Created by: Andy Weir <andy@uknetweb.com>
+ * Project:    MyPlugin
+ * File:       Settings.php
  */
 
-namespace UKNetWeb\PluginTemplate;
+namespace MyVendor\MyPlugin;
 
 /**
- * PluginTemplateSettings
+ * Settings
  *
- * @package UKNetWeb\PluginTemplate
+ * @package MyVendor\MyPlugin
  */
-class  Settings extends \OceanInternet\WpPluginFramework\Settings {
+class Settings extends \OceanInternet\WpPluginFramework\Settings {
 
     /* ---------- Properties: Dependencies ---------------------------------- */
 

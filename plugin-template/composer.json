@@ -1,0 +1,11 @@
+{
+    "name":         "MyPlugin",
+    "config":       {
+        "vendor-dir": "src"
+    },
+    "autoload":     {
+        "psr-0": {
+            "MyVendor": "src"
+        }
+    }
+}
