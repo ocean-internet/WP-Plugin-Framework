@@ -3,6 +3,9 @@
 
 SCRIPTS_DIR=$( cd "$( dirname "$0" )" && pwd );
 
+echo "Install: mu-bower-register";
 cp $SCRIPTS_DIR/mu-bower-register.php   .
+echo "Install: mu-composer-loader";
 cp $SCRIPTS_DIR/mu-composer-loader.php  .
+echo "Install: wp-plugin-framework";
 cp $SCRIPTS_DIR/wp-plugin-framework.php .

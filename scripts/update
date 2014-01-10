@@ -3,5 +3,7 @@
 
 SCRIPTS_DIR=$( cd "$( dirname "$0" )" && pwd );
 
+echo "Update: mu-composer-loader";
 cp $SCRIPTS_DIR/mu-composer-loader.php  .
+echo "Update: wp-plugin-framework";
 cp $SCRIPTS_DIR/wp-plugin-framework.php .
