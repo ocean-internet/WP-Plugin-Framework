@@ -1,5 +1,5 @@
 {
-    "name": "ocean-internet/wp-plugin-framework",
+    "name":        "ocean-internet/wp-plugin-framework",
     "description": "(yet another) OOP Wordpress MyPlugin Framework",
     "type":        "library",
     "keywords":    ["wordpress", "plugin"],
