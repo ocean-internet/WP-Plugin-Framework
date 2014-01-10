@@ -3,7 +3,7 @@
     "description": "(yet another) OOP Wordpress MyPlugin Framework",
     "type":        "library",
     "keywords":    ["wordpress", "plugin"],
-    "homepage":    "https://github.com/OceanInternet/WP-MyPlugin-Framework",
+    "homepage":    "https://github.com/OceanInternet/WP-Plugin-Framework",
     "license":     "(GPL-2.0+ or GPL-3.0+)",
     "authors": [
         {
@@ -14,8 +14,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/OceanInternet/WP-MyPlugin-Framework/issues",
-        "source": "https://github.com/OceanInternet/WP-MyPlugin-Framework"
+        "issues": "https://github.com/OceanInternet/WP-Plugin-Framework/issues",
+        "source": "https://github.com/OceanInternet/WP-Plugin-Framework"
     },
     "require": {
         "pimple/pimple": "1.0.*"
