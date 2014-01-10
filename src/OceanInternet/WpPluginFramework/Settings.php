@@ -28,7 +28,7 @@ abstract class Settings extends Core {
 
         add_options_page(
             oisToHuman($this->getFullName()),
-            oisToHuman($this->getName()),
+            oisToHuman($this->getParentName()),
             'manage_options',
             oisToSlug($this->getFullName()),
             array(
@@ -145,18 +145,7 @@ abstract class Settings extends Core {
         $human = oisToHuman($name);
         $slug  = oisToSlug($name);
 
-        if ($overridden_template = locate_template($this->templateFile)) {
-
-            // locate_template() returns path to file
-            // if either the child theme or the parent theme have overridden the template
-            include $overridden_template;
-
-        } else {
-
-            // If neither the child nor parent theme have overridden the template,
-            // we load the template from the 'templates' sub-directory of the directory this file is in
-            include $this->templateDir . DS . $this->templateFile;
-        }
+        include($this->getTemplate($this->templateFile));
     }
 
     public function printSectionInfo($section) {
