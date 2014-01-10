@@ -19,9 +19,12 @@ if(!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
-if(!defined('OIS_WPPF_DIR')) {
+if(!defined('OIS_WPPF')) {
+
+    define('OIS_WPPF', TRUE);
 
     define('OIS_WPPF_DIR', WPMU_PLUGIN_DIR . DS . 'vendor' . DS . 'ocean-internet' . DS . 'wp-plugin-framework');
+    define('OIS_WPPF_URL', WPMU_PLUGIN_URL . '/vendor/ocean-internet/wp-plugin-framework/');
 
     require OIS_WPPF_DIR . DS . 'bootstrap.php';
 }

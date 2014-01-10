@@ -3,5 +3,6 @@
 
 SCRIPTS_DIR=$( cd "$( dirname "$0" )" && pwd );
 
+cp $SCRIPTS_DIR/mu-bower-register.php   .
 cp $SCRIPTS_DIR/mu-composer-loader.php  .
 cp $SCRIPTS_DIR/wp-plugin-framework.php .

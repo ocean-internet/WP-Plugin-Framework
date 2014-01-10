@@ -22,6 +22,7 @@ if(!defined('DS')) {
 if(!defined('MU_VENDOR_DIR')) {
 
     define('MU_VENDOR_DIR', WPMU_PLUGIN_DIR . DS . 'vendor');
+}
 
     require MU_VENDOR_DIR . DS . 'autoload.php';
-}
+

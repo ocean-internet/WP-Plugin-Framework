@@ -8,3 +8,28 @@ add_action(
         'addPluginSettings'
     )
 );
+
+add_action(
+    'wp_enqueue_scripts',
+    function () {
+
+        myPluginRegisterScripts();
+    }
+);
+
+add_action(
+    'admin_enqueue_scripts',
+    function () {
+
+        myPluginRegisterScripts();
+    }
+);
+
+add_action(
+    'login_enqueue_scripts',
+    function () {
+
+        myPluginRegisterScripts();
+    }
+);
+

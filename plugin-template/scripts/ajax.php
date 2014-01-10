@@ -1,0 +1,17 @@
+<?php
+/**
+add_action(
+    'wp_ajax_nopriv_my_action',
+    array(
+        $oisPluginFrameworkC['MyPluginClass'],
+        'myAction'
+    )
+);
+add_action(
+    'wp_ajax_my_action',
+    array(
+        $oisPluginFrameworkC['MyPluginClass'],
+        'myAction'
+    )
+);
+**/
