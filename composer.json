@@ -4,7 +4,7 @@
     "type":        "library",
     "keywords":    ["wordpress", "plugin"],
     "homepage":    "https://github.com/OceanInternet/WP-Plugin-Framework",
-    "license":     "(GPL-2.0+ or GPL-3.0+)",
+    "license":     "GPL-2.0+",
     "authors": [
         {
             "name":     "Andy Weir",
