@@ -19,9 +19,9 @@ if(!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
-if(!defined(MU_VENDOR_DIR)) {
+if(!defined('MU_VENDOR_DIR')) {
 
-    define('MU_VENDOR_DIR', WPMU_PLUGIN_DIR . DS . 'vendor);
+    define('MU_VENDOR_DIR', WPMU_PLUGIN_DIR . DS . 'vendor');
 
     require MU_VENDOR_DIR . DS . 'autoload.php';
 }
