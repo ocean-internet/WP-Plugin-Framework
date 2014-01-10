@@ -1,4 +1,5 @@
 <?php
+/*
 add_shortcode(
     'my-plugin-shortcode',
     array(
@@ -6,3 +7,4 @@ add_shortcode(
         'shortcodeFunction'
     )
 );
+*/

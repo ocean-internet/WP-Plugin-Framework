@@ -7,5 +7,10 @@
         "psr-0": {
             "MyVendor": "src"
         }
-    }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "sh scripts/install"
+        ]
+    }                                                            
 }
