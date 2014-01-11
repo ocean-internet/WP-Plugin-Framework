@@ -1,0 +1,46 @@
+#!/bin/bash
+
+. ./settings.cfg
+
+echo "Replace MyVendor with $VENDOR_NAME";
+
+grep -lr -e 'MyVendor' composer.json | xargs sed -i "s/MyVendor/$VENDOR_NAME/g";
+grep -lr -e 'MyVendor' my-plugin.php | xargs sed -i "s/MyVendor/$VENDOR_NAME/g";
+grep -lr -e 'MyVendor' src/          | xargs sed -i "s/MyVendor/$VENDOR_NAME/g";
+
+echo "Replace MyPluginName with $PROJECT_TITLE";
+
+grep -lr -e 'MyPluginName' my-plugin.php | xargs sed -i "s/MyPluginName/$PROJECT_TITLE/g";
+
+echo "Replace MyPlugin with $PROJECT_NAME";
+
+grep -lr -e 'MyPlugin' angular/      | xargs sed -i "s/MyPlugin/$PROJECT_NAME/g";
+grep -lr -e 'MyPlugin' composer.json | xargs sed -i "s/MyPlugin/$PROJECT_NAME/g";
+grep -lr -e 'MyPlugin' my-plugin.php | xargs sed -i "s/MyPlugin/$PROJECT_NAME/g";
+grep -lr -e 'MyPlugin' scripts/      | xargs sed -i "s/MyPlugin/$PROJECT_NAME/g";
+grep -lr -e 'MyPlugin' src/          | xargs sed -i "s/MyPlugin/$PROJECT_NAME/g";
+
+echo "Replace MY_PLUGIN with $PROJECT_CONST";
+
+grep -lr -e 'MY_PLUGIN' my-plugin.php | xargs sed -i "s/MY_PLUGIN/$PROJECT_CONST/g";
+grep -lr -e 'MY_PLUGIN' scripts/*      | xargs sed -i "s/MY_PLUGIN/$PROJECT_CONST/g";
+
+echo "Replace myPlugin with $FUNCTION_NAME";
+
+grep -lr -e 'myPlugin' scripts/ | xargs sed -i "s/myPlugin/$FUNCTION_NAME/g";
+
+echo "Replace my-plugin with $PLUGIN_NAME";
+
+grep -lr -e 'my-plugin' my-plugin.php | xargs sed -i "s/my-plugin/$PLUGIN_NAME/g";
+grep -lr -e 'my-plugin' scripts/      | xargs sed -i "s/my-plugin/$PLUGIN_NAME/g";
+
+echo "Rename files/folders";
+mv angular/MyPlugin.js "angular/$PROJECT_NAME.js"
+mv my-plugin.php "$PLUGIN_NAME.php"
+mv src/MyVendor/MyPlugin "src/MyVendor/$PROJECT_NAME"
+mv src/MyVendor "src/$VENDOR_NAME"
+
+echo "Install: Composer autoload";
+composer install;
+
+echo "Done";

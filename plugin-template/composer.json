@@ -1,16 +1,11 @@
 {
-    "name":         "MyPlugin",
-    "config":       {
+    "name":     "MyPlugin",
+    "config":   {
         "vendor-dir": "src"
     },
-    "autoload":     {
+    "autoload": {
         "psr-0": {
             "MyVendor": "src"
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "sh scripts/install"
-        ]
-    }                                                            
+    }
 }
