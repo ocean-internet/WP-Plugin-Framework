@@ -29,19 +29,19 @@ then run:
 To Create a Plugin
 ---------------
 
-copy vendor/ocean-internet/wp-plugin-framework/plugin-template:
+make a copy of "wp-plugin-framework/plugin-template":
 
     cp -r mu-plugins/vendor/ocean-internet/wp-plugin-framework/plugin-template plugins/new-plugin-name
 
-enter the folder and edit settings.cfg:
+enter the plugin folder and edit "settings.cfg":
 
     cd plugins/new-plugin-name && nano settings.cfg
 
-make the install script executable:
+make the "install" script executable:
 
     chmod +x install
  
-run the install script:
+run the "install" script:
 
     ./install
     
